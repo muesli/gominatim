@@ -40,13 +40,13 @@ func main() {
 	qry := new(gominatim.Query)
 	qry.Q = "Hamburg"
 	resp, _ := qry.Get() // Returns []gominatim.Result
-	fmt.Println(resp[0].Lat, resp[0].Lon)
+	fmt.Printf("Found location: %s (%s, %s)\n", resp[0].DisplayName, resp[0].Lat, resp[0].Lon)
 
 	//Get by City
 	qry = &gominatim.Query{
 		City: "Berlin",
 	}
 	resp, _ = qry.Get()
-	fmt.Println(resp[0].Lat, resp[0].Lon)
+	fmt.Printf("Found location: %s (%s, %s)\n", resp[0].DisplayName, resp[0].Lat, resp[0].Lon)
 }
 ```

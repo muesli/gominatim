@@ -31,9 +31,7 @@ var (
 	server string
 )
 
-type ResultList struct {
-	Results []*Result
-}
+type ResultList []*Result
 
 type Address struct {
 	House       string `json:"house_number,omitempty"`
