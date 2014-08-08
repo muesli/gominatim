@@ -10,14 +10,22 @@ probably want to use gominatim to do it.
 
 LGPLv3
 
+## Features
+
+The plan is to cover everything, this site documents:
+[Nomiatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
+
+ * [x] Search
+ * [ ] Reverese Geocoding
+
 ## Contributions
 
-Are welcome
+Are welcome if you want to implement the Reverse Geocoding-Part
 
 ## Examples
 
 
-```
+```go
 package main
 
 import(
