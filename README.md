@@ -28,26 +28,25 @@ Are welcome if you want to implement the Reverse Geocoding-Part
 ```go
 package main
 
-import(
-    "github.com/grindhold/gominatim"
-    "fmt"
+import (
+	"fmt"
+	"github.com/grindhold/gominatim"
 )
 
+func main() {
+	gominatim.SetServer("http://nominatim.openstreetmap.org/search")
 
-func main(){
-    gominatim.SetServer("http://nominatim.openstreetmap.org/search")
+	//Get by a Querystring
+	qry := new(gominatim.Query)
+	qry.Q = "Hamburg"
+	resp, _ := qry.Get() // Returns []gominatim.Result
+	fmt.Println(resp[0].Lat, resp[0].Lon)
 
-    //Get by a Querystring
-    qry := new(gominatim.Query)
-    qry.Q="Hamburg"
-    resp, _:= qry.Get() // Returns []gominatim.Result
-    fmt.Println(resp[0].Lat, resp[0].Lon)
-
-    //Get by City
-    qry = &gominatim.Query{
-         City:"Berlin",
-    }
-    resp, _ = qry.Get()
-    fmt.Println(resp[0].Lat, resp[0].Lon)
+	//Get by City
+	qry = &gominatim.Query{
+		City: "Berlin",
+	}
+	resp, _ = qry.Get()
+	fmt.Println(resp[0].Lat, resp[0].Lon)
 }
 ```
