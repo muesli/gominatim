@@ -1,0 +1,122 @@
+/*
+ *    Copyright (C) 2014 Daniel 'grindhold' Brendle
+ *
+ *    This program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU Lesser General Public License as published
+ *    by the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU Lesser General Public License for more details.
+ *
+ *    You should have received a copy of the GNU Lesser General Public License
+ *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *    Authors:
+ *      Daniel 'grindhold' Brendle <grindhold@skarphed.org>
+ */
+
+package gominatim
+
+import (
+    "testing"
+    "strings"
+    "fmt"
+)
+
+func Test_CreateQuery (t *testing.T) {
+    expectation := "q=Berlin"
+    q := new (Query)
+    q.Q = "Berlin"
+    qstr, err := q.buildQuery()
+    if !strings.Contains(qstr, expectation) {
+        t.Error(fmt.Sprintf("resulting query should contain %s",expectation))
+    }
+    if err != nil {
+        t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
+    }
+}
+
+func Test_CreateQueryWithParams (t *testing.T) {
+    expectations := []string{
+        "city=Berlin",
+        "street=Karl-Marx-Allee",
+        "county=Berlin",
+        "state=Germany",
+        "postalcode=012345",
+    }
+    q := &Query{
+        City:"Berlin",
+        Street:"Karl-Marx-Allee",
+        County:"Berlin",
+        State:"Germany",
+        Postalcode:"012345",
+    }
+    qstr, err := q.buildQuery()
+    for i := range(expectations){
+        if !strings.Contains(qstr, expectations[i]) {
+            t.Error(fmt.Sprintf("resulting query should contain %s",expectations[i]))
+        }
+    }
+    if err != nil {
+        t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
+    }
+}
+
+func Test_SpecificFieldsUsed (t *testing.T) {
+    q1 := &Query{
+        City:"Berlin",
+        Street:"Karl-Marx-Allee",
+        County:"Berlin",
+        State:"Germany",
+        Postalcode:"012345",
+    }
+    q2 := new (Query)
+    q2.Q = "Berlin"
+    if !q1.specificFieldsUsed() {
+        t.Error("Q1 -> specific fields are used. should return true")
+    }
+    if q2.specificFieldsUsed() {
+        t.Error("Q2 -> specific fields are not used. should return false")
+    }
+}
+
+func Test_EmptyQuery (t *testing.T) {
+    q := new(Query)
+    _, err := q.buildQuery()
+    if err == nil {
+        t.Error("Empty query should result in an error")
+    }
+}
+
+func Test_DoubleQuery (t *testing.T) {
+    q := &Query{
+        City:"Berlin",
+        Street:"Karl-Marx-Allee",
+        County:"Berlin",
+        State:"Germany",
+        Postalcode:"012345",
+        Q:"Berlin",
+    }
+    expectations := []string{
+        "city=Berlin",
+        "street=Karl-Marx-Allee",
+        "county=Berlin",
+        "state=Germany",
+        "postalcode=012345",
+    }
+    qstr , err := q.buildQuery()
+    for i := range(expectations){
+        if strings.Contains(qstr, expectations[i]) {
+            t.Error(fmt.Sprintf("query should not contain %s",expectations[i]))
+        }
+    }
+    if !strings.Contains(qstr, "q=Berlin") {
+        t.Error(fmt.Sprintf("query should contain q=Berlin"))
+    }
+    if err != nil {
+        t.Error("should not throw error")
+    }
+}
