@@ -10,7 +10,7 @@ probably want to use gominatim to do it.
 
 ## License
 
-LGPLv3
+[LGPLv3](https://www.gnu.org/licenses/lgpl.html )
 
 ## Features
 
