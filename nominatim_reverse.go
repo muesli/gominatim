@@ -57,6 +57,9 @@ type ReverseQuery struct {
 }
 
 func (r *ReverseQuery) buildQuery() (string, error) {
+	if server == "" {
+		return "", errors.New("Server is not set. Set via gominatim.SetServer(srv string)")
+	}
 	s := server
 	s = s + "/reverse?format=json"
 	if r.AcceptLanguage != "" {

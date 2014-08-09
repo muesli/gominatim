@@ -75,6 +75,9 @@ func (q *SearchQuery) specificFieldsUsed() bool {
 }
 
 func (q *SearchQuery) buildQuery() (string, error) {
+	if server == "" {
+		return "", errors.New("Server is not set. Set via gominatim.SetServer(srv string)")
+	}
 	s := server
 	s = s + "/search?format=json"
 	if q.JsonCallback != nil {
