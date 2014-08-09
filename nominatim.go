@@ -34,31 +34,31 @@ var (
 type ResultList []*Result
 
 type Address struct {
-	House       string `json:"house_number,omitempty"`
-	Road        string `json:"road,omitempty"`
-	Village     string `json:"village,omitempty"`
-	Town        string `json:"town,omitempty"`
-	City        string `json:"city,omitempty"`
-	County      string `json:"state_district,omitempty"`
-	Postcode    string `json:"postcode,omitempty"`
-	Country     string `json:"country,omitempty"`
-	CountryCode string `json:"country_code,omitempty"`
+	House       string `json:"house_number"`
+	Road        string `json:"road"`
+	Village     string `json:"village"`
+	Town        string `json:"town"`
+	City        string `json:"city"`
+	County      string `json:"state_district"`
+	Postcode    string `json:"postcode"`
+	Country     string `json:"country"`
+	CountryCode string `json:"country_code"`
 }
 
 type Result struct {
-	PlaceId       string     `json:"place_id,omitempty"`
-	License       string     `json:"license,omitempty"`
-	OsmType       string     `json:"osm_type,omitempty"`
-	OsmId         string     `json:"osm_id,omitempty"`
-	Boundingbox   []string   `json:"boundingbox,omitempty"`
-	Polygonpoints [][]string `json:"polygonpoints,omitempty"`
-	Lat           string     `json:"lat,omitempty"`
-	Lon           string     `json:"lon,omitempty"`
-	DisplayName   string     `json:"display_name,omitempty"`
-	Class         string     `json:"class,omitempty"`
-	Type          string     `json:"type,omitempty"`
-	Address       Address    `json:"address,omitempty"`
-	Importance    float32    `json:"importance",omitempty"`
+	PlaceId       string     `json:"place_id"`
+	License       string     `json:"license"`
+	OsmType       string     `json:"osm_type"`
+	OsmId         string     `json:"osm_id"`
+	Boundingbox   []string   `json:"boundingbox"`
+	Polygonpoints [][]string `json:"polygonpoints"`
+	Lat           string     `json:"lat"`
+	Lon           string     `json:"lon"`
+	DisplayName   string     `json:"display_name"`
+	Class         string     `json:"class"`
+	Type          string     `json:"type"`
+	Address       Address    `json:"address"`
+	Importance    float32    `json:"importance""`
 }
 
 type Query struct {
