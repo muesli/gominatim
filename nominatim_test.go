@@ -21,102 +21,102 @@
 package gominatim
 
 import (
-    "testing"
-    "strings"
-    "fmt"
+	"fmt"
+	"strings"
+	"testing"
 )
 
-func Test_CreateQuery (t *testing.T) {
-    expectation := "q=Berlin"
-    q := new (Query)
-    q.Q = "Berlin"
-    qstr, err := q.buildQuery()
-    if !strings.Contains(qstr, expectation) {
-        t.Error(fmt.Sprintf("resulting query should contain %s",expectation))
-    }
-    if err != nil {
-        t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
-    }
+func Test_CreateQuery(t *testing.T) {
+	expectation := "q=Berlin"
+	q := new(SearchQuery)
+	q.Q = "Berlin"
+	qstr, err := q.buildQuery()
+	if !strings.Contains(qstr, expectation) {
+		t.Error(fmt.Sprintf("resulting query should contain %s", expectation))
+	}
+	if err != nil {
+		t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
+	}
 }
 
-func Test_CreateQueryWithParams (t *testing.T) {
-    expectations := []string{
-        "city=Berlin",
-        "street=Karl-Marx-Allee",
-        "county=Berlin",
-        "state=Germany",
-        "postalcode=012345",
-    }
-    q := &Query{
-        City:"Berlin",
-        Street:"Karl-Marx-Allee",
-        County:"Berlin",
-        State:"Germany",
-        Postalcode:"012345",
-    }
-    qstr, err := q.buildQuery()
-    for i := range(expectations){
-        if !strings.Contains(qstr, expectations[i]) {
-            t.Error(fmt.Sprintf("resulting query should contain %s",expectations[i]))
-        }
-    }
-    if err != nil {
-        t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
-    }
+func Test_CreateQueryWithParams(t *testing.T) {
+	expectations := []string{
+		"city=Berlin",
+		"street=Karl-Marx-Allee",
+		"county=Berlin",
+		"state=Germany",
+		"postalcode=012345",
+	}
+	q := &SearchQuery{
+		City:       "Berlin",
+		Street:     "Karl-Marx-Allee",
+		County:     "Berlin",
+		State:      "Germany",
+		Postalcode: "012345",
+	}
+	qstr, err := q.buildQuery()
+	for i := range expectations {
+		if !strings.Contains(qstr, expectations[i]) {
+			t.Error(fmt.Sprintf("resulting query should contain %s", expectations[i]))
+		}
+	}
+	if err != nil {
+		t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
+	}
 }
 
-func Test_SpecificFieldsUsed (t *testing.T) {
-    q1 := &Query{
-        City:"Berlin",
-        Street:"Karl-Marx-Allee",
-        County:"Berlin",
-        State:"Germany",
-        Postalcode:"012345",
-    }
-    q2 := new (Query)
-    q2.Q = "Berlin"
-    if !q1.specificFieldsUsed() {
-        t.Error("Q1 -> specific fields are used. should return true")
-    }
-    if q2.specificFieldsUsed() {
-        t.Error("Q2 -> specific fields are not used. should return false")
-    }
+func Test_SpecificFieldsUsed(t *testing.T) {
+	q1 := &SearchQuery{
+		City:       "Berlin",
+		Street:     "Karl-Marx-Allee",
+		County:     "Berlin",
+		State:      "Germany",
+		Postalcode: "012345",
+	}
+	q2 := new(SearchQuery)
+	q2.Q = "Berlin"
+	if !q1.specificFieldsUsed() {
+		t.Error("Q1 -> specific fields are used. should return true")
+	}
+	if q2.specificFieldsUsed() {
+		t.Error("Q2 -> specific fields are not used. should return false")
+	}
 }
 
-func Test_EmptyQuery (t *testing.T) {
-    q := new(Query)
-    _, err := q.buildQuery()
-    if err == nil {
-        t.Error("Empty query should result in an error")
-    }
+func Test_EmptyQuery(t *testing.T) {
+	q := new(SearchQuery)
+	_, err := q.buildQuery()
+	if err == nil {
+		t.Error("Empty query should result in an error")
+	}
 }
 
-func Test_DoubleQuery (t *testing.T) {
-    q := &Query{
-        City:"Berlin",
-        Street:"Karl-Marx-Allee",
-        County:"Berlin",
-        State:"Germany",
-        Postalcode:"012345",
-        Q:"Berlin",
-    }
-    expectations := []string{
-        "city=Berlin",
-        "street=Karl-Marx-Allee",
-        "county=Berlin",
-        "state=Germany",
-        "postalcode=012345",
-    }
-    qstr , err := q.buildQuery()
-    for i := range(expectations){
-        if strings.Contains(qstr, expectations[i]) {
-            t.Error(fmt.Sprintf("query should not contain %s",expectations[i]))
-        }
-    }
-    if !strings.Contains(qstr, "q=Berlin") {
-        t.Error(fmt.Sprintf("query should contain q=Berlin"))
-    }
-    if err != nil {
-        t.Error("should not throw error")
-    }
+func Test_DoubleQuery(t *testing.T) {
+	q := &SearchQuery{
+		City:       "Berlin",
+		Street:     "Karl-Marx-Allee",
+		County:     "Berlin",
+		State:      "Germany",
+		Postalcode: "012345",
+		Q:          "Berlin",
+	}
+	expectations := []string{
+		"city=Berlin",
+		"street=Karl-Marx-Allee",
+		"county=Berlin",
+		"state=Germany",
+		"postalcode=012345",
+	}
+	qstr, err := q.buildQuery()
+	for i := range expectations {
+		if strings.Contains(qstr, expectations[i]) {
+			t.Error(fmt.Sprintf("query should not contain %s", expectations[i]))
+		}
+	}
+	if !strings.Contains(qstr, "q=Berlin") {
+		t.Error(fmt.Sprintf("query should contain q=Berlin"))
+	}
+	if err != nil {
+		t.Error("should not throw error")
+	}
 }
