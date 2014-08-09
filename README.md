@@ -1,5 +1,7 @@
 # Gominatim - Go library to access nominatim geocoding services
 
+![Buildstatus](https://travis-ci.org/grindhold/gominatim.svg)
+
 ## Geocoding? WTF?
 
 If you want to determine the coordinates of a certain location by only having its
@@ -13,7 +15,7 @@ LGPLv3
 ## Features
 
 The plan is to cover everything, this site documents:
-[Nomiatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
+[Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
 
  * [x] Search
  * [ ] Reverese Geocoding
