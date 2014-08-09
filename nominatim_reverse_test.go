@@ -21,32 +21,32 @@
 package gominatim
 
 import (
+	"strings"
 	"testing"
-    "strings"
 )
 
-func Test_CreateReverseQuery (t *testing.T) {
-    defer SetServer("")
-    SetServer("http://nominatim.openstreetmap.org")
-    rqry := new(ReverseQuery)
-    rqry.Lat = "52.5170365"
-    rqry.Lon = "13.3888599"
-    qstr, _ := rqry.buildQuery()
-    if !strings.Contains(qstr, "lat=52.5170365") || !strings.Contains(qstr, "13.3888599") {
-        t.Error("query does not contain longitude and latitude")
-    }
+func Test_CreateReverseQuery(t *testing.T) {
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
+	rqry := new(ReverseQuery)
+	rqry.Lat = "52.5170365"
+	rqry.Lon = "13.3888599"
+	qstr, _ := rqry.buildQuery()
+	if !strings.Contains(qstr, "lat=52.5170365") || !strings.Contains(qstr, "13.3888599") {
+		t.Error("query does not contain longitude and latitude")
+	}
 }
 
-func Test_ReverseQueryWithoutServer (t *testing.T) {
-    rqry := new(ReverseQuery)
-    rqry.Lat = "52.5170365"
-    rqry.Lon = "13.3888599"
-    _, err := rqry.buildQuery()
-    if err != nil {
-        if ! (err.Error() == "Server is not set. Set via gominatim.SetServer(srv string)") {
-            t.Error("Expecting error about unset server. Received" + err.Error())
-        }
-    } else {
-        t.Error("Expected error about unset server. Got none.")
-    }
+func Test_ReverseQueryWithoutServer(t *testing.T) {
+	rqry := new(ReverseQuery)
+	rqry.Lat = "52.5170365"
+	rqry.Lon = "13.3888599"
+	_, err := rqry.buildQuery()
+	if err != nil {
+		if !(err.Error() == "Server is not set. Set via gominatim.SetServer(srv string)") {
+			t.Error("Expecting error about unset server. Received" + err.Error())
+		}
+	} else {
+		t.Error("Expected error about unset server. Got none.")
+	}
 }

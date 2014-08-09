@@ -27,8 +27,8 @@ import (
 )
 
 func Test_CreateSearchQuery(t *testing.T) {
-    defer SetServer("")
-    SetServer("http://nominatim.openstreetmap.org")
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
 	expectation := "q=Berlin"
 	q := new(SearchQuery)
 	q.Q = "Berlin"
@@ -42,8 +42,8 @@ func Test_CreateSearchQuery(t *testing.T) {
 }
 
 func Test_CreateSearchQueryWithParams(t *testing.T) {
-    defer SetServer("")
-    SetServer("http://nominatim.openstreetmap.org")
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
 	expectations := []string{
 		"city=Berlin",
 		"street=Karl-Marx-Allee",
@@ -70,8 +70,8 @@ func Test_CreateSearchQueryWithParams(t *testing.T) {
 }
 
 func Test_SpecificFieldsUsed(t *testing.T) {
-    defer SetServer("")
-    SetServer("http://nominatim.openstreetmap.org")
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
 	q1 := &SearchQuery{
 		City:       "Berlin",
 		Street:     "Karl-Marx-Allee",
@@ -90,8 +90,8 @@ func Test_SpecificFieldsUsed(t *testing.T) {
 }
 
 func Test_EmptySearchQuery(t *testing.T) {
-    defer SetServer("")
-    SetServer("http://nominatim.openstreetmap.org")
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
 	q := new(SearchQuery)
 	_, err := q.buildQuery()
 	if err == nil {
@@ -100,8 +100,8 @@ func Test_EmptySearchQuery(t *testing.T) {
 }
 
 func Test_DoubleSearchQuery(t *testing.T) {
-    defer SetServer("")
-    SetServer("http://nominatim.openstreetmap.org")
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
 	q := &SearchQuery{
 		City:       "Berlin",
 		Street:     "Karl-Marx-Allee",
