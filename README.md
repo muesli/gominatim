@@ -18,7 +18,7 @@ The plan is to cover everything, this site documents:
 [Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
 
  * [x] Search
- * [ ] Reverese Geocoding
+ * [x] Reverese Geocoding
 
 ## Contributions
 
