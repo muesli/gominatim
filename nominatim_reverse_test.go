@@ -70,6 +70,7 @@ func Test_OSMType(t *testing.T) {
 	rqry = new(ReverseQuery)
 	rqry.Lat = "52.5170365"
 	rqry.Lon = "13.3888599"
+	rqry.OsmType = "R"
 	_, err = rqry.buildQuery()
 	if err != nil {
 		t.Error("Expecting no error. Got " + err.Error())
@@ -99,5 +100,31 @@ func Test_LatLon(t *testing.T) {
 		}
 	} else {
 		t.Error("Expecting error about missing longitude. Got none.")
+	}
+}
+
+func Test_Zoom(t *testing.T) {
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
+	rqry := new(ReverseQuery)
+	rqry.Lon = "13.3888599"
+	rqry.Lat = "52.5170365"
+	rqry.Zoom = 1337
+	_, err := rqry.buildQuery()
+	if err != nil {
+		if !(err.Error() == "Zoom must be within 0 and 18. 1337 is out of range") {
+			t.Error("Expecting error about wrong Zoomfactor. Received" + err.Error())
+		}
+	} else {
+		t.Error("Expecting error about wrong Zoomfactor. Got none.")
+	}
+
+	rqry = new(ReverseQuery)
+	rqry.Lon = "13.3888599"
+	rqry.Lat = "52.5170365"
+	rqry.Zoom = 13
+	_, err = rqry.buildQuery()
+	if err != nil {
+		t.Error("Expecting no error. Got " + err.Error())
 	}
 }
