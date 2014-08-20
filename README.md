@@ -1,6 +1,7 @@
 # Gominatim - Go library to access nominatim geocoding services
 
 ![Buildstatus](https://travis-ci.org/grindhold/gominatim.svg)
+[![Coverage Status](https://coveralls.io/repos/grindhold/gominatim/badge.png?branch=master)](https://coveralls.io/r/grindhold/gominatim?branch=master)
 
 ## Geocoding? WTF?
 
@@ -15,10 +16,7 @@ probably want to use gominatim to do it.
 ## Features
 
 The plan is to cover everything, this site documents:
-[Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim) (Please also refer to this 
-wikipage if you plan to use the nominatim service of openstreetmaps. If you plan to generate
-high loads with geoqueries, it would be nice if you did it on your own infrastructure, not on
-their server)
+[Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim) 
 
  * [x] Search
  * [x] Reverese Geocoding
