@@ -28,7 +28,7 @@ import (
 	"net/http"
 )
 
-type ReverseAPIResult struct {
+type reverseAPIResult struct {
 	ReverseResult
 	Error string `json:"error"`
 }
@@ -111,7 +111,7 @@ func (r *ReverseQuery) Get() (*ReverseResult, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := new(ReverseAPIResult)
+	result := new(reverseAPIResult)
 	err = json.Unmarshal(body, &result)
 	if err != nil {
 		return nil, err
