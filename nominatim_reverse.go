@@ -26,6 +26,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+    "net/url"
 )
 
 type reverseAPIResult struct {
@@ -92,7 +93,7 @@ func (r *ReverseQuery) buildQuery() (string, error) {
 		s = s + "&addressdetails=0"
 	}
 	if r.Email != "" {
-		s = s + "&email=" + r.Email
+		s = url.QueryEscape(s + "&email=" + r.Email)
 	}
 	return s, nil
 }

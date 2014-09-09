@@ -25,6 +25,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
+    "net/url"
 )
 
 type searchResultError struct {
@@ -88,26 +89,26 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&json_callback=" + string(cb)
 	}
 	if q.AcceptLanguage != "" {
-		s += "&accept_language=" + q.AcceptLanguage
+		s += url.QueryEscape("&accept_language=" + q.AcceptLanguage)
 	}
 	if q.Q != "" {
-		s += "&q=" + q.Q
+		s += url.QueryEscape("&q=" + q.Q)
 	} else {
 		if q.specificFieldsUsed() {
 			if q.Street != "" {
-				s += "&street=" + q.Street
+				s += url.QueryEscape("&street=" + q.Street)
 			}
 			if q.City != "" {
-				s += "&city=" + q.City
+				s += url.QueryEscape("&city=" + q.City)
 			}
 			if q.County != "" {
-				s += "&county=" + q.County
+				s += url.QueryEscape("&county=" + q.County)
 			}
 			if q.State != "" {
-				s += "&state=" + q.State
+				s += url.QueryEscape("&state=" + q.State)
 			}
 			if q.Postalcode != "" {
-				s += "&postalcode=" + q.Postalcode
+				s += url.QueryEscape("&postalcode=" + q.Postalcode)
 			}
 		} else {
 			return "", errors.New("You must use either Q or one or more of Street, City, County, State, Postalcode. The latter will be ignored if the further is used.")
@@ -125,10 +126,10 @@ func (q *SearchQuery) buildQuery() (string, error) {
 				first = false
 			}
 		}
-		s += "&countrycodes=" + als
+		s += url.QueryEscape("&countrycodes=" + als)
 	}
 	if q.Viewbox != "" {
-		s += "&viewbox=" + q.Viewbox
+		s += url.QueryEscape("&viewbox=" + q.Viewbox)
 	}
 	if q.Bounded {
 		s += "&bounded=1"
@@ -146,7 +147,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&addressdetails=0"
 	}
 	if q.Email != "" {
-		s += "&email=" + q.Email
+		s += url.QueryEscape("&email=" + q.Email)
 	}
 	if q.ExcludePlaceIds != nil && len(q.ExcludePlaceIds) > 0 {
 		als := ""
@@ -160,7 +161,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 				first = false
 			}
 		}
-		s += "&exclude_place_ids=" + als
+		s += url.QueryEscape("&exclude_place_ids=" + als)
 	}
 	if q.Limit > 0 {
 		s += "&limit=" + string(q.Limit)
