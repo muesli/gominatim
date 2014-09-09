@@ -89,26 +89,26 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&json_callback=" + string(cb)
 	}
 	if q.AcceptLanguage != "" {
-		s += url.QueryEscape("&accept_language=" + q.AcceptLanguage)
+    s += "&accept_language=" + url.QueryEscape(q.AcceptLanguage)
 	}
 	if q.Q != "" {
-		s += url.QueryEscape("&q=" + q.Q)
+		s += "&q=" + url.QueryEscape(q.Q)
 	} else {
 		if q.specificFieldsUsed() {
 			if q.Street != "" {
-				s += url.QueryEscape("&street=" + q.Street)
+				s += "&street=" + url.QueryEscape(q.Street)
 			}
 			if q.City != "" {
-				s += url.QueryEscape("&city=" + q.City)
+				s += "&city=" + url.QueryEscape(q.City)
 			}
 			if q.County != "" {
-				s += url.QueryEscape("&county=" + q.County)
+				s += "&county=" + url.QueryEscape(q.County)
 			}
 			if q.State != "" {
-				s += url.QueryEscape("&state=" + q.State)
+				s += "&state=" + url.QueryEscape(q.State)
 			}
 			if q.Postalcode != "" {
-				s += url.QueryEscape("&postalcode=" + q.Postalcode)
+				s += "&postalcode=" + url.QueryEscape(q.Postalcode)
 			}
 		} else {
 			return "", errors.New("You must use either Q or one or more of Street, City, County, State, Postalcode. The latter will be ignored if the further is used.")
@@ -126,10 +126,10 @@ func (q *SearchQuery) buildQuery() (string, error) {
 				first = false
 			}
 		}
-		s += url.QueryEscape("&countrycodes=" + als)
+		s += "&countrycodes=" + url.QueryEscape(als)
 	}
 	if q.Viewbox != "" {
-		s += url.QueryEscape("&viewbox=" + q.Viewbox)
+		s += "&viewbox=" + url.QueryEscape(q.Viewbox)
 	}
 	if q.Bounded {
 		s += "&bounded=1"
@@ -147,7 +147,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&addressdetails=0"
 	}
 	if q.Email != "" {
-		s += url.QueryEscape("&email=" + q.Email)
+		s += "&email=" + url.QueryEscape(q.Email)
 	}
 	if q.ExcludePlaceIds != nil && len(q.ExcludePlaceIds) > 0 {
 		als := ""
@@ -161,7 +161,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 				first = false
 			}
 		}
-		s += url.QueryEscape("&exclude_place_ids=" + als)
+		s += "&exclude_place_ids=" + url.QueryEscape(als)
 	}
 	if q.Limit > 0 {
 		s += "&limit=" + string(q.Limit)

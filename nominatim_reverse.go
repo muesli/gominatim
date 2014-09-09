@@ -93,7 +93,7 @@ func (r *ReverseQuery) buildQuery() (string, error) {
 		s = s + "&addressdetails=0"
 	}
 	if r.Email != "" {
-		s = url.QueryEscape(s + "&email=" + r.Email)
+		s = s + "&email=" + url.QueryEscape(r.Email)
 	}
 	return s, nil
 }
