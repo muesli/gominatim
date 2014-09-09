@@ -25,7 +25,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
-    "net/url"
+	"net/url"
 )
 
 type searchResultError struct {
@@ -89,7 +89,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&json_callback=" + string(cb)
 	}
 	if q.AcceptLanguage != "" {
-    s += "&accept_language=" + url.QueryEscape(q.AcceptLanguage)
+		s += "&accept_language=" + url.QueryEscape(q.AcceptLanguage)
 	}
 	if q.Q != "" {
 		s += "&q=" + url.QueryEscape(q.Q)
