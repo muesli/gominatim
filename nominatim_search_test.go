@@ -130,3 +130,19 @@ func Test_DoubleSearchQuery(t *testing.T) {
 		t.Error("should not throw error")
 	}
 }
+
+func Test_LimitedSearchQuery(t *testing.T) {
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
+	expectation := "limit=123"
+	q := new(SearchQuery)
+	q.Q = "Berlin"
+	q.Limit = 123
+	qstr, err := q.buildQuery()
+	if !strings.Contains(qstr, expectation) {
+		t.Error(fmt.Sprintf("resulting query should contain %s", expectation))
+	}
+	if err != nil {
+		t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
+	}
+}

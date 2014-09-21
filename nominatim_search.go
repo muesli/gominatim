@@ -26,6 +26,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strconv"
 )
 
 type searchResultError struct {
@@ -164,7 +165,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&exclude_place_ids=" + url.QueryEscape(als)
 	}
 	if q.Limit > 0 {
-		s += "&limit=" + string(q.Limit)
+		s += "&limit=" + strconv.Itoa(q.Limit)
 	}
 	if q.PolygonGeojson {
 		s += "&polygon_geojson=1"
