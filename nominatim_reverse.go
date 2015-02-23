@@ -64,7 +64,7 @@ func (r *ReverseQuery) buildQuery() (string, error) {
 	s := server
 	s = s + "/reverse?format=json"
 	if r.AcceptLanguage != "" {
-		s = s + "&accept_language=" + r.AcceptLanguage
+		s = s + "&accept-language=" + r.AcceptLanguage
 	}
 	if r.OsmType != "" {
 		if r.OsmType != "N" && r.OsmType != "W" && r.OsmType != "R" {

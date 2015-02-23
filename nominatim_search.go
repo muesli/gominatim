@@ -90,7 +90,7 @@ func (q *SearchQuery) buildQuery() (string, error) {
 		s += "&json_callback=" + string(cb)
 	}
 	if q.AcceptLanguage != "" {
-		s += "&accept_language=" + url.QueryEscape(q.AcceptLanguage)
+		s += "&accept-language=" + url.QueryEscape(q.AcceptLanguage)
 	}
 	if q.Q != "" {
 		s += "&q=" + url.QueryEscape(q.Q)
