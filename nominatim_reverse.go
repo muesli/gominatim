@@ -86,7 +86,7 @@ func (r *ReverseQuery) buildQuery() (string, error) {
 	if r.Zoom > 18 || r.Zoom < 0 {
 		return "", errors.New(fmt.Sprintf("Zoom must be within 0 and 18. %d is out of range", r.Zoom))
 	}
-	s = s + fmt.Sprintf("&zoom&d", r.Zoom)
+	s = s + fmt.Sprintf("&zoom=%d", r.Zoom)
 	if r.AddressDetails {
 		s = s + "&addressdetails=1"
 	} else {
