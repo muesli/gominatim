@@ -146,3 +146,22 @@ func Test_LimitedSearchQuery(t *testing.T) {
 		t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
 	}
 }
+
+func Test_AddressFields(t *testing.T) {
+	defer SetServer("")
+	SetServer("http://nominatim.openstreetmap.org")
+	q := new(SearchQuery)
+	q.Q = "Unter den Linden"
+	resp, err := q.Get()
+	if resp[0].Address.Suburb != "" {
+		t.Error(fmt.Sprintf("Address should contain suburb"))
+	}
+
+	if resp[0].Address.State != "" {
+		t.Error(fmt.Sprintf("Address should contain State"))
+	}
+
+	if err != nil {
+		t.Error(fmt.Sprintf("triggered error that was not supposed to: %s", err.Error()))
+	}
+}
