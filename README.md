@@ -16,7 +16,7 @@ probably want to use gominatim to do it.
 ## Features
 
 The plan is to cover everything, this site documents:
-[Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim) 
+[Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
 
  * [x] Search
  * [x] Reverese Geocoding
@@ -53,7 +53,7 @@ func main() {
 	qry := gominatim.SearchQuery{
 		Q: "Hamburg",
 	}
-	resp, _ := qry.Get() // Returns []gominatim.Result
+	resp, _ := qry.Get() // Returns []gominatim.SearchResult
 	fmt.Printf("Found location: %s (%s, %s)\n", resp[0].DisplayName, resp[0].Lat, resp[0].Lon)
 
 	//Get by City
