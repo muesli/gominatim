@@ -6,7 +6,7 @@
 ## Geocoding? WTF?
 
 If you want to determine the coordinates of a certain location by only having its
-name, you can do this via a geocoding service. If you want to do this in go, you
+name, you can do this via a geocoding service. If you want to do this in Go, you
 probably want to use gominatim to do it.
 
 ## License
@@ -21,11 +21,11 @@ The plan is to cover everything this site documents:
  * [x] Search
  * [x] Reverse Geocoding
 
-## Contributions–
+## Contributions
 
 …Are welcome :)
 
-If you want to add anyting, do it and submit a pull-request.
+If you want to add anything, do it and submit a pull-request.
 Please add Tests for your additions!
 
 ## Usage of the Openstreetmaps-Nominatim Server
