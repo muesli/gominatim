@@ -15,25 +15,25 @@ probably want to use gominatim to do it.
 
 ## Features
 
-The plan is to cover everything, this site documents:
+The plan is to cover everything this site documents:
 [Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
 
  * [x] Search
- * [x] Reverese Geocoding
+ * [x] Reverse Geocoding
 
 ## Contributions–
 
 …Are welcome :)
 
-If you want to add anyting, do it and submit a pullrequest.
-Please add Tests for your additions
+If you want to add anyting, do it and submit a pull-request.
+Please add Tests for your additions!
 
 ## Usage of the Openstreetmaps-Nominatim Server
 
 Please refer to the [Nominatim Wiki](http://wiki.openstreetmap.org/wiki/Nominatim)
 if you plan to use the nominatim service of openstreetmaps. If you plan to generate
 high loads with geoqueries, it would be nice if you did it on your own infrastructure, not on
-their server
+their server.
 
 ## Examples
 
