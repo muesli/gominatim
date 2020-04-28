@@ -35,10 +35,10 @@ type reverseAPIResult struct {
 }
 
 type ReverseResult struct {
-	PlaceId     string  `json:"place_id"`
+	PlaceId     int     `json:"place_id"`
 	License     string  `json:"license"`
 	OsmType     string  `json:"osm_type"`
-	OsmId       string  `json:"osm_id"`
+	OsmId       int     `json:"osm_id"`
 	Lat         string  `json:"lat"`
 	Lon         string  `json:"lon"`
 	DisplayName string  `json:"display_name"`
