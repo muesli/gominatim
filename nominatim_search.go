@@ -34,10 +34,10 @@ type searchResultError struct {
 }
 
 type SearchResult struct {
-	PlaceId       string     `json:"place_id"`
+	PlaceId       int        `json:"place_id"`
 	License       string     `json:"license"`
 	OsmType       string     `json:"osm_type"`
-	OsmId         string     `json:"osm_id"`
+	OsmId         int        `json:"osm_id"`
 	Boundingbox   []string   `json:"boundingbox"`
 	Polygonpoints [][]string `json:"polygonpoints"`
 	Lat           string     `json:"lat"`

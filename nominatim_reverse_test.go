@@ -27,7 +27,7 @@ import (
 
 func Test_CreateReverseQuery(t *testing.T) {
 	defer SetServer("")
-	SetServer("http://nominatim.openstreetmap.org")
+	SetServer("https://nominatim.openstreetmap.org")
 	rqry := new(ReverseQuery)
 	rqry.Lat = "52.5170365"
 	rqry.Lon = "13.3888599"
@@ -53,7 +53,7 @@ func Test_ReverseQueryWithoutServer(t *testing.T) {
 
 func Test_OSMType(t *testing.T) {
 	defer SetServer("")
-	SetServer("http://nominatim.openstreetmap.org")
+	SetServer("https://nominatim.openstreetmap.org")
 	rqry := new(ReverseQuery)
 	rqry.Lat = "52.5170365"
 	rqry.Lon = "13.3888599"
@@ -79,7 +79,7 @@ func Test_OSMType(t *testing.T) {
 
 func Test_LatLon(t *testing.T) {
 	defer SetServer("")
-	SetServer("http://nominatim.openstreetmap.org")
+	SetServer("https://nominatim.openstreetmap.org")
 	rqry := new(ReverseQuery)
 	rqry.Lon = "13.3888599"
 	_, err := rqry.buildQuery()
@@ -105,7 +105,7 @@ func Test_LatLon(t *testing.T) {
 
 func Test_Zoom(t *testing.T) {
 	defer SetServer("")
-	SetServer("http://nominatim.openstreetmap.org")
+	SetServer("https://nominatim.openstreetmap.org")
 	rqry := new(ReverseQuery)
 	rqry.Lon = "13.3888599"
 	rqry.Lat = "52.5170365"
