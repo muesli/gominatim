@@ -11,7 +11,7 @@ probably want to use gominatim to do it.
 
 ## License
 
-[LGPLv3](https://www.gnu.org/licenses/lgpl.html )
+[LGPLv3](https://www.gnu.org/licenses/lgpl.html)
 
 ## Features
 
@@ -43,11 +43,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/grindhold/gominatim"
+	"github.com/muesli/gominatim"
 )
 
 func main() {
-	gominatim.SetServer("http://nominatim.openstreetmap.org/")
+	gominatim.SetServer("https://nominatim.openstreetmap.org/")
 
 	//Get by a Querystring
 	qry := gominatim.SearchQuery{
