@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/grindhold/gominatim"
+
+	"github.com/muesli/gominatim"
 )
 
 func main() {
-	gominatim.SetServer("http://nominatim.openstreetmap.org/")
+	gominatim.SetServer("https://nominatim.openstreetmap.org/")
 
 	//Get by a Querystring
 	qry := gominatim.SearchQuery{
