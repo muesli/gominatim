@@ -1,7 +1,10 @@
 # Gominatim - Go library to access nominatim geocoding services
 
-![Buildstatus](https://travis-ci.org/grindhold/gominatim.svg)
-[![Coverage Status](https://coveralls.io/repos/grindhold/gominatim/badge.png?branch=master)](https://coveralls.io/r/grindhold/gominatim?branch=master)
+[![Latest Release](https://img.shields.io/github/release/muesli/gominatim.svg)](https://github.com/muesli/gominatim/releases)
+[![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](https://godoc.org/github.com/muesli/gominatim)
+[![Build Status](https://github.com/muesli/gominatim/workflows/build/badge.svg)](https://github.com/muesli/gominatim/actions)
+[![Coverage Status](https://coveralls.io/repos/github/muesli/gominatim/badge.svg?branch=master)](https://coveralls.io/github/muesli/gominatim?branch=master)
+[![Go ReportCard](http://goreportcard.com/badge/muesli/gominatim)](http://goreportcard.com/report/muesli/gominatim)
 
 ## Geocoding? WTF?
 
